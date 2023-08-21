@@ -1,35 +1,35 @@
 package www.uzmd.xo
 
-import android.content.ContentValues.TAG
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+
+import android.view.LayoutInflater
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import www.uzmd.xo.databinding.ActivityMainBinding
-import kotlin.properties.Delegates
+import www.uzmd.xo.databinding.DrawDialogBinding
+import www.uzmd.xo.databinding.WinDialogBinding
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    val gameLog = GameLog(this)
+    val camO = ArrayList<Int>()
+    val camX = ArrayList<Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        var i: Boolean = true
-        var bt1: Boolean = false
-        var bt2: Boolean = false
-        var bt3: Boolean = false
-        var bt4: Boolean = false
-        var bt5: Boolean = false
-        var bt6: Boolean = false
-        var bt7: Boolean = false
-        var bt8: Boolean = false
-        var bt9: Boolean = false
-        var camO = ArrayList<Int>()
-        var camX = ArrayList<Int>()
+        var i = true
+
+
+
         binding.apply {
+            res()
             imgBtn1.setOnClickListener {
-                if (bt1) {
+                if (gameLog.bt1) {
                     Toast.makeText(
                         this@MainActivity,
                         "Boshqa katakcha tanlang !",
@@ -38,22 +38,21 @@ class MainActivity : AppCompatActivity() {
 
                 } else {
                     if (i) {
-                        camX.add(1)
-                        winX(camX)
                         imgBtn1.setImageResource(R.drawable.x)
                         i = false
+                        camX.add(1)
+                        if (gameLog.win_x(camX)) res() else if (gameLog.draw(camX,camO)) res()
                     } else {
-                        camO.add(1)
-                        winO(camO)
                         imgBtn1.setImageResource(R.drawable.o)
-
-                        i = true
+                        i = false
+                        camO.add(1)
+                        if (gameLog.win_o(camO)) res() else if (gameLog.draw(camX,camO)) res()
                     }
-                    bt1 = true
+                    gameLog.bt1 = true
                 }
             }
             imgBtn2.setOnClickListener {
-                if (bt2) {
+                if (gameLog.bt2) {
                     Toast.makeText(
                         this@MainActivity,
                         "Boshqa katakcha tanlang !",
@@ -62,22 +61,23 @@ class MainActivity : AppCompatActivity() {
 
                 } else {
                     if (i) {
-                        camX.add(2)
-                        winX(camX)
                         imgBtn2.setImageResource(R.drawable.x)
                         i = false
+                        camX.add(2)
+                        if (gameLog.win_x(camX)) res() else if (gameLog.draw(camX,camO)) res()
                     } else {
-                        camO.add(2)
-                        winO(camO)
                         imgBtn2.setImageResource(R.drawable.o)
                         i = true
+                        camO.add(2)
+                        if (gameLog.win_o(camO)) res() else if (gameLog.draw(camX,camO)) res()
+
                     }
-                    bt2 = true
+                    gameLog.bt2 = true
                 }
 
             }
             imgBtn3.setOnClickListener {
-                if (bt3) {
+                if (gameLog.bt3) {
                     Toast.makeText(
                         this@MainActivity,
                         "Boshqa katakcha tanlang !",
@@ -85,21 +85,21 @@ class MainActivity : AppCompatActivity() {
                     ).show()
                 } else {
                     if (i) {
-                        camX.add(3)
-                        winX(camX)
                         imgBtn3.setImageResource(R.drawable.x)
+                        camX.add(3)
                         i = false
+                        if (gameLog.win_x(camX)) res()  else if (gameLog.draw(camX,camO)) res()
                     } else {
-                        camO.add(3)
-                        winO(camO)
                         imgBtn3.setImageResource(R.drawable.o)
+                        camO.add(3)
                         i = true
+                        if (gameLog.win_o(camO)) res() else if (gameLog.draw(camX,camO)) res()
                     }
-                    bt3 = true
+                    gameLog.bt3 = true
                 }
             }
             imgBtn4.setOnClickListener {
-                if (bt4) {
+                if (gameLog.bt4) {
                     Toast.makeText(
                         this@MainActivity,
                         "Boshqa katakcha tanlang !",
@@ -107,21 +107,21 @@ class MainActivity : AppCompatActivity() {
                     ).show()
                 } else {
                     if (i) {
-                        camX.add(4)
-                        winX(camX)
                         imgBtn4.setImageResource(R.drawable.x)
+                        camX.add(4)
                         i = false
+                        if (gameLog.win_x(camX)) res() else if (gameLog.draw(camX,camO)) res()
                     } else {
-                        camO.add(4)
-                        winO(camO)
                         imgBtn4.setImageResource(R.drawable.o)
+                        camO.add(4)
                         i = true
+                        if (gameLog.win_o(camO)) res() else if (gameLog.draw(camX,camO)) res()
                     }
-                    bt4 = true
+                    gameLog.bt4 = true
                 }
             }
             imgBtn5.setOnClickListener {
-                if (bt5) {
+                if (gameLog.bt5) {
                     Toast.makeText(
                         this@MainActivity,
                         "Boshqa katakcha tanlang !",
@@ -129,22 +129,22 @@ class MainActivity : AppCompatActivity() {
                     ).show()
                 } else {
                     if (i) {
-                        camX.add(5)
-                        winX(camX)
                         imgBtn5.setImageResource(R.drawable.x)
+                        camX.add(5)
                         i = false
+                        if (gameLog.win_x(camX)) res() else if (gameLog.draw(camX,camO)) res()
                     } else {
-                        camO.add(5)
-                        winO(camO)
                         imgBtn5.setImageResource(R.drawable.o)
+                        camO.add(5)
                         i = true
+                        if (gameLog.win_o(camO)) res() else if (gameLog.draw(camX,camO)) res()
                     }
-                    bt5 = true
+                    gameLog.bt5 = true
                 }
             }
 
             imgBtn6.setOnClickListener {
-                if (bt6) {
+                if (gameLog.bt6) {
                     Toast.makeText(
                         this@MainActivity,
                         "Boshqa katakcha tanlang !",
@@ -152,23 +152,23 @@ class MainActivity : AppCompatActivity() {
                     ).show()
                 } else {
                     if (i) {
-                        camX.add(6)
-                        winX(camX)
                         imgBtn6.setImageResource(R.drawable.x)
+                        camX.add(6)
                         i = false
+                        if (gameLog.win_x(camX)) res() else if (gameLog.draw(camX,camO)) res()
                     } else {
-                        camO.add(6)
-                        winO(camO)
                         imgBtn6.setImageResource(R.drawable.o)
+                        camO.add(6)
                         i = true
+                        if (gameLog.win_o(camO)) res() else if (gameLog.draw(camX,camO)) res()
                     }
-                    bt6 = true
+                    gameLog.bt6 = true
                 }
             }
 
 
             imgBtn7.setOnClickListener {
-                if (bt7) {
+                if (gameLog.bt7) {
                     Toast.makeText(
                         this@MainActivity,
                         "Boshqa katakcha tanlang !",
@@ -176,22 +176,22 @@ class MainActivity : AppCompatActivity() {
                     ).show()
                 } else {
                     if (i) {
-                        camX.add(7)
-                        winX(camX)
                         imgBtn7.setImageResource(R.drawable.x)
+                        camX.add(7)
                         i = false
+                        if (gameLog.win_x(camX)) res() else if (gameLog.draw(camX,camO)) res()
                     } else {
-                        camO.add(7)
-                        winO(camO)
                         imgBtn7.setImageResource(R.drawable.o)
+                        camO.add(7)
                         i = true
+                        if (gameLog.win_o(camO)) res() else if (gameLog.draw(camX,camO)) res()
                     }
-                    bt7 = true
+                    gameLog.bt7 = true
                 }
             }
 
             imgBtn8.setOnClickListener {
-                if (bt8) {
+                if (gameLog.bt8) {
                     Toast.makeText(
                         this@MainActivity,
                         "Boshqa katakcha tanlang !",
@@ -199,24 +199,23 @@ class MainActivity : AppCompatActivity() {
                     ).show()
                 } else {
                     if (i) {
-                        camX.add(8)
-                        winX(camX)
-                        winO(camO)
                         imgBtn8.setImageResource(R.drawable.x)
+                        camX.add(8)
                         i = false
+                        if (gameLog.win_x(camX)) res() else if (gameLog.draw(camX,camO)) res()
                     } else {
-                        camO.add(8)
-
                         imgBtn8.setImageResource(R.drawable.o)
+                        camO.add(8)
                         i = true
+                        if (gameLog.win_o(camO)) res() else if (gameLog.draw(camX,camO)) res()
                     }
-                    bt8 = true
+                    gameLog.bt8 = true
                 }
             }
 
 
             imgBtn9.setOnClickListener {
-                if (bt9) {
+                if (gameLog.bt9) {
                     Toast.makeText(
                         this@MainActivity,
                         "Boshqa katakcha tanlang !",
@@ -224,17 +223,17 @@ class MainActivity : AppCompatActivity() {
                     ).show()
                 } else {
                     if (i) {
-                        camX.add(9)
-                        winX(camX)
                         imgBtn9.setImageResource(R.drawable.x)
+                        camX.add(9)
                         i = false
+                        if (gameLog.win_x(camX)) res() else if (gameLog.draw(camX,camO)) res()
                     } else {
-                        camO.add(9)
-                        winO(camO)
                         imgBtn9.setImageResource(R.drawable.o)
+                        camO.add(9)
                         i = true
+                        if (gameLog.win_o(camO)) res() else if (gameLog.draw(camX,camO)) res()
                     }
-                    bt9 = true
+                    gameLog.bt9 = true
                 }
             }
 
@@ -242,26 +241,20 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-fun winX(list:ArrayList<Int>){
-    Log.e(TAG, "winX: "+ list.size)
- //   Toast.makeText(this, "X golip", Toast.LENGTH_SHORT).show()
-    if(list.size>2) {
 
-        val gameWinX = GameWinX(list)
-        if (gameWinX.xWin()) {
-            Toast.makeText(this@MainActivity, "X golib", Toast.LENGTH_SHORT).show()
-        }
-    }
-}
-    fun winO(list:ArrayList<Int>){
-        Log.e(TAG, "winX: "+ list.size)
-        //   Toast.makeText(this, "X golip", Toast.LENGTH_SHORT).show()
-        if(list.size>2) {
-
-            val gameWinX = GameWinX(list)
-            if (gameWinX.xWin()) {
-                Toast.makeText(this@MainActivity, "O golib", Toast.LENGTH_SHORT).show()
-            }
+    fun res() {
+        gameLog.restart(camX, camO)
+        //   Thread.sleep(1_000)
+        binding.apply {
+            imgBtn1.setImageResource(R.drawable.res)
+            imgBtn2.setImageResource(R.drawable.res)
+            imgBtn3.setImageResource(R.drawable.res)
+            imgBtn4.setImageResource(R.drawable.res)
+            imgBtn5.setImageResource(R.drawable.res)
+            imgBtn6.setImageResource(R.drawable.res)
+            imgBtn7.setImageResource(R.drawable.res)
+            imgBtn8.setImageResource(R.drawable.res)
+            imgBtn9.setImageResource(R.drawable.res)
         }
     }
 }

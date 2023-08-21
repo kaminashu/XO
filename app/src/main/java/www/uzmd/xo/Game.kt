@@ -1,12 +1,9 @@
 package www.uzmd.xo
 
 interface Game {
-    fun gameWinX_one()
-    fun gameWinX_two()
-    fun gameWinX_three()
-    fun gameWinX_four()
-    fun gameWinX_five()
-    fun gameWinX_six()
-    fun gameWinX_sevn()
-    fun gameWinX_eight()
+fun win_x(list:ArrayList<Int>):Boolean
+fun win_o(list:ArrayList<Int>):Boolean
+fun draw(list1:ArrayList<Int>,list2:ArrayList<Int>):Boolean
+fun restart(list1:ArrayList<Int>,list2:ArrayList<Int>)
+
 }
