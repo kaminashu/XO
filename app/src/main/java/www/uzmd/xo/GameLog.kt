@@ -1,7 +1,10 @@
 package www.uzmd.xo
 
 import android.content.Context
+import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.Window
+import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
 import www.uzmd.xo.databinding.ActivityMainBinding
 import www.uzmd.xo.databinding.DrawDialogBinding
@@ -26,7 +29,10 @@ class GameLog(val context: Context) : Game {
                     WinDialogBinding.inflate(LayoutInflater.from(context), null, false)
                 val dialog = AlertDialog.Builder(context).create()
                 dialog.setView(winDialogBinding.root)
+                val window: Window = dialog.window!!
+                val wlp: WindowManager.LayoutParams = window.attributes
                 winDialogBinding.textWinner.setText("Player X")
+                wlp.gravity = Gravity.TOP
                 dialog.show()
                 winDialogBinding.restart.setOnClickListener {
                     dialog.dismiss()
@@ -46,8 +52,11 @@ class GameLog(val context: Context) : Game {
                 val winDialogBinding =
                     WinDialogBinding.inflate(LayoutInflater.from(context), null, false)
                 val dialog = AlertDialog.Builder(context).create()
+                val window: Window = dialog.window!!
+                val wlp: WindowManager.LayoutParams = window.attributes
                 dialog.setView(winDialogBinding.root)
                 winDialogBinding.textWinner.setText("Player O")
+                wlp.gravity = Gravity.TOP
                 dialog.show()
                 winDialogBinding.restart.setOnClickListener {
                     dialog.dismiss()
@@ -65,7 +74,10 @@ class GameLog(val context: Context) : Game {
                 DrawDialogBinding.inflate(LayoutInflater.from(context), null, false)
             val dialog = AlertDialog.Builder(context).create()
             dialog.setView(drawDialogBinding.root)
-            drawDialogBinding.textWinner.setText("Player O")
+            val window: Window = dialog.window!!
+            val wlp: WindowManager.LayoutParams = window.attributes
+            drawDialogBinding.textWinner.setText("Telnglik bo`ldi")
+            wlp.gravity = Gravity.TOP
             dialog.show()
             drawDialogBinding.restart.setOnClickListener {
                 dialog.dismiss()
@@ -76,7 +88,6 @@ class GameLog(val context: Context) : Game {
     }
 
     override fun restart(list1: ArrayList<Int>, list2: ArrayList<Int>) {
-        val binding = ActivityMainBinding.inflate(LayoutInflater.from(context), null, false)
 
         list1.clear()
         list2.clear()

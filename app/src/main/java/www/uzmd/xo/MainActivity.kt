@@ -17,12 +17,12 @@ class MainActivity : AppCompatActivity() {
     val gameLog = GameLog(this)
     val camO = ArrayList<Int>()
     val camX = ArrayList<Int>()
-
+    var i = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        var i = true
+
 
 
 
@@ -41,14 +41,15 @@ class MainActivity : AppCompatActivity() {
                         imgBtn1.setImageResource(R.drawable.x)
                         i = false
                         camX.add(1)
-                        if (gameLog.win_x(camX)) res() else if (gameLog.draw(camX,camO)) res()
+                        if (gameLog.win_x(camX)) res() else if (gameLog.draw(camX, camO)) res() else  gameLog.bt1 =false
+
                     } else {
                         imgBtn1.setImageResource(R.drawable.o)
                         i = false
                         camO.add(1)
-                        if (gameLog.win_o(camO)) res() else if (gameLog.draw(camX,camO)) res()
+                        if (gameLog.win_o(camX)) res() else if (gameLog.draw(camX, camO)) res() else  gameLog.bt1 =false
                     }
-                    gameLog.bt1 = true
+
                 }
             }
             imgBtn2.setOnClickListener {
@@ -64,15 +65,15 @@ class MainActivity : AppCompatActivity() {
                         imgBtn2.setImageResource(R.drawable.x)
                         i = false
                         camX.add(2)
-                        if (gameLog.win_x(camX)) res() else if (gameLog.draw(camX,camO)) res()
+                        if (gameLog.win_x(camX)) res() else if (gameLog.draw(camX, camO)) res() else gameLog.bt2 = true
                     } else {
                         imgBtn2.setImageResource(R.drawable.o)
                         i = true
                         camO.add(2)
-                        if (gameLog.win_o(camO)) res() else if (gameLog.draw(camX,camO)) res()
+                        if (gameLog.win_o(camO)) res() else if (gameLog.draw(camX, camO)) res() else gameLog.bt2 = true
 
                     }
-                    gameLog.bt2 = true
+
                 }
 
             }
@@ -88,14 +89,14 @@ class MainActivity : AppCompatActivity() {
                         imgBtn3.setImageResource(R.drawable.x)
                         camX.add(3)
                         i = false
-                        if (gameLog.win_x(camX)) res()  else if (gameLog.draw(camX,camO)) res()
+                        if (gameLog.win_x(camX)) res() else if (gameLog.draw(camX, camO)) res() else  gameLog.bt3 = true
                     } else {
                         imgBtn3.setImageResource(R.drawable.o)
                         camO.add(3)
                         i = true
-                        if (gameLog.win_o(camO)) res() else if (gameLog.draw(camX,camO)) res()
+                        if (gameLog.win_o(camO)) res() else if (gameLog.draw(camX, camO)) res() else  gameLog.bt3 = true
                     }
-                    gameLog.bt3 = true
+
                 }
             }
             imgBtn4.setOnClickListener {
@@ -110,14 +111,14 @@ class MainActivity : AppCompatActivity() {
                         imgBtn4.setImageResource(R.drawable.x)
                         camX.add(4)
                         i = false
-                        if (gameLog.win_x(camX)) res() else if (gameLog.draw(camX,camO)) res()
+                        if (gameLog.win_x(camX)) res() else if (gameLog.draw(camX, camO)) res() else gameLog.bt4 = true
                     } else {
                         imgBtn4.setImageResource(R.drawable.o)
                         camO.add(4)
                         i = true
-                        if (gameLog.win_o(camO)) res() else if (gameLog.draw(camX,camO)) res()
+                        if (gameLog.win_o(camO)) res() else if (gameLog.draw(camX, camO)) res() else gameLog.bt4 = true
                     }
-                    gameLog.bt4 = true
+
                 }
             }
             imgBtn5.setOnClickListener {
@@ -132,14 +133,14 @@ class MainActivity : AppCompatActivity() {
                         imgBtn5.setImageResource(R.drawable.x)
                         camX.add(5)
                         i = false
-                        if (gameLog.win_x(camX)) res() else if (gameLog.draw(camX,camO)) res()
+                        if (gameLog.win_x(camX)) res() else if (gameLog.draw(camX, camO)) res() else   gameLog.bt5 = true
                     } else {
                         imgBtn5.setImageResource(R.drawable.o)
                         camO.add(5)
                         i = true
-                        if (gameLog.win_o(camO)) res() else if (gameLog.draw(camX,camO)) res()
+                        if (gameLog.win_o(camO)) res() else if (gameLog.draw(camX, camO)) res() else   gameLog.bt5 = true
                     }
-                    gameLog.bt5 = true
+
                 }
             }
 
@@ -155,14 +156,14 @@ class MainActivity : AppCompatActivity() {
                         imgBtn6.setImageResource(R.drawable.x)
                         camX.add(6)
                         i = false
-                        if (gameLog.win_x(camX)) res() else if (gameLog.draw(camX,camO)) res()
+                        if (gameLog.win_x(camX)) res() else if (gameLog.draw(camX, camO)) res() else  gameLog.bt6 = true
                     } else {
                         imgBtn6.setImageResource(R.drawable.o)
                         camO.add(6)
                         i = true
-                        if (gameLog.win_o(camO)) res() else if (gameLog.draw(camX,camO)) res()
+                        if (gameLog.win_o(camO)) res() else if (gameLog.draw(camX, camO)) res() else  gameLog.bt6 = true
                     }
-                    gameLog.bt6 = true
+
                 }
             }
 
@@ -179,14 +180,14 @@ class MainActivity : AppCompatActivity() {
                         imgBtn7.setImageResource(R.drawable.x)
                         camX.add(7)
                         i = false
-                        if (gameLog.win_x(camX)) res() else if (gameLog.draw(camX,camO)) res()
+                        if (gameLog.win_x(camX)) res() else if (gameLog.draw(camX, camO)) res() else  gameLog.bt7 = true
                     } else {
                         imgBtn7.setImageResource(R.drawable.o)
                         camO.add(7)
                         i = true
-                        if (gameLog.win_o(camO)) res() else if (gameLog.draw(camX,camO)) res()
+                        if (gameLog.win_o(camO)) res() else if (gameLog.draw(camX, camO)) res() else  gameLog.bt7 = true
                     }
-                    gameLog.bt7 = true
+
                 }
             }
 
@@ -202,14 +203,14 @@ class MainActivity : AppCompatActivity() {
                         imgBtn8.setImageResource(R.drawable.x)
                         camX.add(8)
                         i = false
-                        if (gameLog.win_x(camX)) res() else if (gameLog.draw(camX,camO)) res()
+                        if (gameLog.win_x(camX)) res() else if (gameLog.draw(camX, camO)) res() else  gameLog.bt8 = true
                     } else {
                         imgBtn8.setImageResource(R.drawable.o)
                         camO.add(8)
                         i = true
-                        if (gameLog.win_o(camO)) res() else if (gameLog.draw(camX,camO)) res()
+                        if (gameLog.win_o(camO)) res() else if (gameLog.draw(camX, camO)) res() else  gameLog.bt8 = true
                     }
-                    gameLog.bt8 = true
+
                 }
             }
 
@@ -226,14 +227,14 @@ class MainActivity : AppCompatActivity() {
                         imgBtn9.setImageResource(R.drawable.x)
                         camX.add(9)
                         i = false
-                        if (gameLog.win_x(camX)) res() else if (gameLog.draw(camX,camO)) res()
+                        if (gameLog.win_x(camX)) res() else if (gameLog.draw(camX, camO)) res() else gameLog.bt9 = true
                     } else {
                         imgBtn9.setImageResource(R.drawable.o)
                         camO.add(9)
                         i = true
-                        if (gameLog.win_o(camO)) res() else if (gameLog.draw(camX,camO)) res()
+                        if (gameLog.win_o(camO)) res() else if (gameLog.draw(camX, camO)) res() else gameLog.bt9 = true
                     }
-                    gameLog.bt9 = true
+
                 }
             }
 
@@ -243,6 +244,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun res() {
+        i = true
         gameLog.restart(camX, camO)
         //   Thread.sleep(1_000)
         binding.apply {
